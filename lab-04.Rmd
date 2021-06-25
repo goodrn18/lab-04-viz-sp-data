@@ -25,7 +25,7 @@ Do not use spaces in code chunk labels.
 
 ### Exercise 2
 
-Remove this text, and add your answer for Exercise 1 here.
+Remove this text, and add your answer for Exercise 2 here.
 Add code chunks as needed.
 Don't forget to label your code chunk.
 Do not use spaces in code chunk labels.
@@ -46,5 +46,12 @@ Do not use spaces in code chunk labels.
 
 ...
 
+ 
 Add exercise headings as needed.
 
+## additional info 
+
+ON, BC : Canada
+ANT : Columbia 
+FM : Honduras
+AG : Mexico
