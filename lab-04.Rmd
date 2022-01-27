@@ -49,9 +49,3 @@ Do not use spaces in code chunk labels.
  
 Add exercise headings as needed.
 
-## additional info 
-
-ON, BC : Canada
-ANT : Columbia 
-FM : Honduras
-AG : Mexico
