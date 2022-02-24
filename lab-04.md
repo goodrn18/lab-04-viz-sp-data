@@ -16,15 +16,40 @@ states <- read_csv("data/states.csv")
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here. Add code
-chunks as needed. Don’t forget to label your code chunk. Do not use
-spaces in code chunk labels.
+Each row in the Denny’s dataset represents a restaurant location in the
+US. The variables are: Address, City, State, Zip, Latitude, and
+Longitude.
+
+``` r
+data("dennys")
+nrow(dennys)
+```
+
+    ## [1] 1643
+
+``` r
+ncol(dennys)
+```
+
+    ## [1] 6
 
 ### Exercise 2
 
-Remove this text, and add your answer for Exercise 2 here. Add code
-chunks as needed. Don’t forget to label your code chunk. Do not use
-spaces in code chunk labels.
+The rows and columns represent the same things as the dennys dataset in
+which each row is a location. The column variables are the same.
+
+``` r
+data("laquinta")
+nrow(laquinta)
+```
+
+    ## [1] 909
+
+``` r
+ncol(laquinta)
+```
+
+    ## [1] 6
 
 ### Exercise 3
 
