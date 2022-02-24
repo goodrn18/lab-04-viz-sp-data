@@ -45,16 +45,38 @@ We could potentially filter for State, but I am not sure how to filter without h
 Another idea would be to filter for locations above or below a certain latitude. 
 
 ### Exercise 5
-
+There are no locations outside the US so filtering for state abbreviations, gives us an empty tibble.
 ```{r non_state_dennys}
-dn %>%
+dennys %>%
   filter(!(state %in% states$abbreviation))
 ```
 
 ### Exercise 6
 
-...
+```{r dennys_country}
+dennys %>%
+  mutate(country = "United States")
+```
 
  
-Add exercise headings as needed.
+### Exercise 7
 
+As mentioned above: There are 2 Laquinta locations in Canada, 6 in Mexico, 1 in China, 1 in New Zealand, 1 in Honduras, 3 in Turkey, 1 in UAE, 1 in Chile, and 1 in Columbia. However, it looks like this data does not include the locations in China, New Zealand, Turkey, or UAE.
+
+### Exercise 8
+
+```{r laquinta_filter_tibble}
+laquinta %>%
+  filter(!(state %in% states$abbreviation))
+```
+
+```{r laquinta_country}
+laquinta %>%
+  mutate(country = case_when(
+    state %in% state.abb     ~ "United States",
+    state %in% c("ON", "BC") ~ "Canada",
+    state == "ANT"           ~ "Colombia",
+    state == "CH"            ~ "Chile", #check this one
+    state %in% c("AG", "QR", "NL", "VE", "SL", "PU") ~ "Mexico",
+    state == "FM"            ~ "Honduras"))
+```
