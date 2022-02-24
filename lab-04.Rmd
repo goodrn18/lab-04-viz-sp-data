@@ -80,3 +80,35 @@ laquinta %>%
     state %in% c("AG", "QR", "NL", "VE", "SL", "PU") ~ "Mexico",
     state == "FM"            ~ "Honduras"))
 ```
+```{r filter_unitedstates}
+laquinta <- laquinta %>%
+  filter(country == "United States")
+```
+
+###Exercise 9
+
+```{r dennys_state_count}
+dennys %>%
+  count(state) %>%
+  inner_join(states, by = c("state" = "abbreviation"))
+```
+```{r laquinta_state_count}
+laquinta %>%
+  count(state) %>%
+  inner_join(states, by = c("state" = "abbreviation"))
+```
+### Exercise 10
+
+```{r establishment_col}
+dennys <- dennys %>%
+  mutate(establishment = "Denny's")
+laquinta <- laquinta %>%
+  mutate(establishment = "La Quinta")
+
+dn_lq <- bind_rows(dennys, laquinta)
+```
+
+```{r plot_locations}
+ggplot(dn_lq, mapping = aes(x = longitude, y = latitude, color = establishment)) +
+  geom_point()
+```
