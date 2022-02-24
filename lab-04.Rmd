@@ -36,15 +36,20 @@ ncol(laquinta)
 
 ### Exercise 3
 
-...
+There are no Denny's locations outside the US. There are 2 Laquinta locations in Canada, 6 in Mexico, 1 in China, 1 in New Zealand, 1 in Honduras, 3 in Turkey, 1 in UAE, 1 in Chile, and 1 in Columbia - so 17 total locations outside the US. 
 
 ### Exercise 4
 
-...
+We could potentially filter for State, but I am not sure how to filter without having to list all 50 US State abbreviations, considering we don't know what was used for non-States without having to manually search the data for State abbreviations we do not recognize.
+
+Another idea would be to filter for locations above or below a certain latitude. 
 
 ### Exercise 5
 
-...
+```{r non_state_dennys}
+dn %>%
+  filter(!(state %in% states$abbreviation))
+```
 
 ### Exercise 6
 
