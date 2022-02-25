@@ -1,7 +1,7 @@
 Lab 04 - La Quinta is Spanish for next to Denny’s, Pt. 1
 ================
 Rachel Good
-2022-02-24
+2022-02-25
 
 ### Load packages and data
 
@@ -137,7 +137,7 @@ laquinta %>%
     ## 14 8640 Alexandra Rd                        "\nR~ BC    V6X1~    -123.     49.2
 
 ``` r
-laquinta %>%
+laquinta <- laquinta %>%
   mutate(country = case_when(
     state %in% state.abb     ~ "United States",
     state %in% c("ON", "BC") ~ "Canada",
@@ -147,17 +147,69 @@ laquinta %>%
     state == "FM"            ~ "Honduras"))
 ```
 
-    ## # A tibble: 909 x 7
-    ##    address                          city  state zip   longitude latitude country
-    ##    <chr>                            <chr> <chr> <chr>     <dbl>    <dbl> <chr>  
-    ##  1 793 W. Bel Air Avenue            "\nA~ MD    21001     -76.2     39.5 United~
-    ##  2 3018 CatClaw Dr                  "\nA~ TX    79606     -99.8     32.4 United~
-    ##  3 3501 West Lake Rd                "\nA~ TX    79601     -99.7     32.5 United~
-    ##  4 184 North Point Way              "\nA~ GA    30102     -84.7     34.1 United~
-    ##  5 2828 East Arlington Street       "\nA~ OK    74820     -96.6     34.8 United~
-    ##  6 14925 Landmark Blvd              "\nA~ TX    75254     -96.8     33.0 United~
-    ##  7 Carretera Panamericana Sur KM 12 "\nA~ AG    20345    -102.      21.8 Mexico 
-    ##  8 909 East Frontage Rd             "\nA~ TX    78516     -98.1     26.2 United~
-    ##  9 2116 Yale Blvd Southeast         "\nA~ NM    87106    -107.      35.1 United~
-    ## 10 7439 Pan American Fwy Northeast  "\nA~ NM    87109    -107.      35.2 United~
-    ## # ... with 899 more rows
+``` r
+laquinta <- laquinta %>%
+  filter(country == "United States")
+```
+
+\#\#\#Exercise 9
+
+``` r
+dennys %>%
+  count(state) %>%
+  inner_join(states, by = c("state" = "abbreviation"))
+```
+
+    ## # A tibble: 51 x 4
+    ##    state     n name                     area
+    ##    <chr> <int> <chr>                   <dbl>
+    ##  1 AK        3 Alaska               665384. 
+    ##  2 AL        7 Alabama               52420. 
+    ##  3 AR        9 Arkansas              53179. 
+    ##  4 AZ       83 Arizona              113990. 
+    ##  5 CA      403 California           163695. 
+    ##  6 CO       29 Colorado             104094. 
+    ##  7 CT       12 Connecticut            5543. 
+    ##  8 DC        2 District of Columbia     68.3
+    ##  9 DE        1 Delaware               2489. 
+    ## 10 FL      140 Florida               65758. 
+    ## # ... with 41 more rows
+
+``` r
+laquinta %>%
+  count(state) %>%
+  inner_join(states, by = c("state" = "abbreviation"))
+```
+
+    ## # A tibble: 48 x 4
+    ##    state     n name           area
+    ##    <chr> <int> <chr>         <dbl>
+    ##  1 AK        2 Alaska      665384.
+    ##  2 AL       16 Alabama      52420.
+    ##  3 AR       13 Arkansas     53179.
+    ##  4 AZ       18 Arizona     113990.
+    ##  5 CA       56 California  163695.
+    ##  6 CO       27 Colorado    104094.
+    ##  7 CT        6 Connecticut   5543.
+    ##  8 FL       74 Florida      65758.
+    ##  9 GA       41 Georgia      59425.
+    ## 10 IA        4 Iowa         56273.
+    ## # ... with 38 more rows
+
+### Exercise 10
+
+``` r
+dennys <- dennys %>%
+  mutate(establishment = "Denny's")
+laquinta <- laquinta %>%
+  mutate(establishment = "La Quinta")
+
+dn_lq <- bind_rows(dennys, laquinta)
+```
+
+``` r
+ggplot(dn_lq, mapping = aes(x = longitude, y = latitude, color = establishment)) +
+  geom_point()
+```
+
+![](lab-04_files/figure-gfm/plot_locations-1.png)<!-- -->

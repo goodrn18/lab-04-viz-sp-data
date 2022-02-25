@@ -71,7 +71,7 @@ laquinta %>%
 ```
 
 ```{r laquinta_country}
-laquinta %>%
+laquinta <- laquinta %>%
   mutate(country = case_when(
     state %in% state.abb     ~ "United States",
     state %in% c("ON", "BC") ~ "Canada",
