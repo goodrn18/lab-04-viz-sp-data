@@ -1,7 +1,7 @@
 Lab 04 - La Quinta is Spanish for next to Denny’s, Pt. 1
 ================
 Rachel Good
-2022-02-25
+2022-02-26
 
 ### Load packages and data
 
@@ -213,3 +213,28 @@ ggplot(dn_lq, mapping = aes(x = longitude, y = latitude, color = establishment))
 ```
 
 ![](lab-04_files/figure-gfm/plot_locations-1.png)<!-- -->
+
+### Exercise 11
+
+Mitch Hedberg’s joke does not seem to apply in North Carolina.
+
+``` r
+dn_lq_nc <- dn_lq %>% 
+  filter(state == "NC")
+ggplot(dn_lq_nc, mapping = aes(x = longitude, y = latitude, color = establishment)) +
+  geom_point(alpha = .5)
+```
+
+![](lab-04_files/figure-gfm/NorthCarolina-1.png)<!-- -->
+
+\#\#\#Exercise 12 Mitch Hedberg’s joke appears to apply to Texas, unlike
+North Carolina.
+
+``` r
+dn_lq_tx <- dn_lq %>% 
+  filter(state == "TX")
+ggplot(dn_lq_tx, mapping = aes(x = longitude, y = latitude, color = establishment)) +
+  geom_point(alpha = .3)
+```
+
+![](lab-04_files/figure-gfm/Texas-1.png)<!-- -->

@@ -112,3 +112,21 @@ dn_lq <- bind_rows(dennys, laquinta)
 ggplot(dn_lq, mapping = aes(x = longitude, y = latitude, color = establishment)) +
   geom_point()
 ```
+
+### Exercise 11
+Mitch Hedberg's joke does not seem to apply in North Carolina.
+```{r NorthCarolina}
+dn_lq_nc <- dn_lq %>% 
+  filter(state == "NC")
+ggplot(dn_lq_nc, mapping = aes(x = longitude, y = latitude, color = establishment)) +
+  geom_point(alpha = .5)
+```
+
+###Exercise 12
+Mitch Hedberg's joke appears to apply to Texas, unlike North Carolina.
+```{r Texas}
+dn_lq_tx <- dn_lq %>% 
+  filter(state == "TX")
+ggplot(dn_lq_tx, mapping = aes(x = longitude, y = latitude, color = establishment)) +
+  geom_point(alpha = .3)
+```
